@@ -1,0 +1,126 @@
+{
+  "title": "Device Watchdog",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Device Watchdog",
+        "description": "Choose the entities to watch. Enter one entity ID per line, or separate them with commas. An entity that stays unavailable longer than the offline threshold triggers a notification.",
+        "data": {
+          "entities": "Entities to watch",
+          "offline_after_minutes": "Offline threshold (minutes)",
+          "repeat_minutes": "Repeat notification interval (minutes)",
+          "notify_service": "Notification service",
+          "persistent_notification": "Create persistent notifications",
+          "watch_unknown": "Treat 'unknown' as offline",
+          "ignore_startup_minutes": "Startup grace period (minutes)"
+        },
+        "data_description": {
+          "entities": "Entity IDs separated by new lines or commas, for example sensor.plug_power and light.hallway.",
+          "offline_after_minutes": "How long an entity must stay unavailable before the first notification is sent. Minimum 1 minute.",
+          "repeat_minutes": "How often to repeat the notification while the entity is still offline. Minimum 5 minutes.",
+          "notify_service": "Optional notification service, for example notify.24117rn76e. Mobile app and Telegram notifiers are supported.",
+          "persistent_notification": "Also create a persistent notification in Home Assistant.",
+          "watch_unknown": "Also treat the 'unknown' state as offline. Useful for sensors that lose their value without becoming unavailable.",
+          "ignore_startup_minutes": "Do not send notifications during the first minutes after the integration is loaded, so slow integrations do not cause false alarms."
+        }
+      }
+    },
+    "error": {
+      "no_entities": "Add at least one entity to watch.",
+      "invalid_entities": "These entities were not found: {invalid_entities}",
+      "unknown": "Unexpected error occurred."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Device Watchdog options",
+        "description": "Update the watched entities and notification settings.",
+        "data": {
+          "entities": "Entities to watch",
+          "offline_after_minutes": "Offline threshold (minutes)",
+          "repeat_minutes": "Repeat notification interval (minutes)",
+          "notify_service": "Notification service",
+          "persistent_notification": "Create persistent notifications",
+          "watch_unknown": "Treat 'unknown' as offline",
+          "ignore_startup_minutes": "Startup grace period (minutes)"
+        },
+        "data_description": {
+          "entities": "Entity IDs separated by new lines or commas, for example sensor.plug_power and light.hallway.",
+          "offline_after_minutes": "How long an entity must stay unavailable before the first notification is sent. Minimum 1 minute.",
+          "repeat_minutes": "How often to repeat the notification while the entity is still offline. Minimum 5 minutes.",
+          "notify_service": "Optional notification service, for example notify.24117rn76e. Mobile app and Telegram notifiers are supported.",
+          "persistent_notification": "Also create a persistent notification in Home Assistant.",
+          "watch_unknown": "Also treat the 'unknown' state as offline. Useful for sensors that lose their value without becoming unavailable.",
+          "ignore_startup_minutes": "Do not send notifications during the first minutes after the integration is loaded, so slow integrations do not cause false alarms."
+        }
+      }
+    },
+    "error": {
+      "no_entities": "Add at least one entity to watch.",
+      "invalid_entities": "These entities were not found: {invalid_entities}",
+      "unknown": "Unexpected error occurred."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "devices_offline": {
+        "name": "Devices offline"
+      },
+      "offline_devices": {
+        "name": "Offline devices"
+      }
+    },
+    "binary_sensor": {
+      "any_device_offline": {
+        "name": "Any device offline"
+      }
+    }
+  },
+  "services": {
+    "check_now": {
+      "name": "Check now",
+      "description": "Run an immediate offline check for all watched entities.",
+      "fields": {
+        "entry_id": {
+          "name": "Config entry",
+          "description": "Only check this config entry. Leave empty to check all Device Watchdog entries."
+        }
+      }
+    },
+    "reset": {
+      "name": "Reset",
+      "description": "Clear offline tracking and notification history.",
+      "fields": {
+        "entry_id": {
+          "name": "Config entry",
+          "description": "Only reset this config entry. Leave empty to reset all Device Watchdog entries."
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "entry_not_found": {
+      "message": "Device Watchdog config entry {entry_id} was not found."
+    }
+  },
+  "notifications": {
+    "offline": {
+      "title": "Device offline: {name}",
+      "message": "{name} ({entity_id}) has been offline for {duration}."
+    },
+    "repeat": {
+      "title": "Device still offline: {name}",
+      "message": "{name} ({entity_id}) is still offline after {duration}."
+    },
+    "recovered": {
+      "title": "Device back online: {name}",
+      "message": "{name} ({entity_id}) is back online after {duration} offline."
+    },
+    "units": {
+      "days": "d",
+      "hours": "h",
+      "minutes": "min"
+    }
+  }
+}

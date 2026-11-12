@@ -1,0 +1,13 @@
+{
+  "domain": "energy_cost",
+  "name": "Energy Cost",
+  "version": "0.1.0",
+  "documentation": "https://github.com/edhases/home-energy-toolkit",
+  "issue_tracker": "https://github.com/edhases/home-energy-toolkit",
+  "codeowners": ["@edhases"],
+  "iot_class": "local_polling",
+  "integration_type": "service",
+  "config_flow": true,
+  "dependencies": [],
+  "requirements": []
+}

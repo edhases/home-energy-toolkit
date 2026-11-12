@@ -1,0 +1,13 @@
+{
+  "domain": "device_watchdog",
+  "name": "Device Watchdog",
+  "codeowners": ["@edhases"],
+  "config_flow": true,
+  "documentation": "https://github.com/edhases/home-energy-toolkit",
+  "issue_tracker": "https://github.com/edhases/home-energy-toolkit",
+  "integration_type": "service",
+  "iot_class": "local_polling",
+  "requirements": [],
+  "version": "0.1.0",
+  "homeassistant": "2026.11.0"
+}

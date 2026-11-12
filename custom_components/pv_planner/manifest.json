@@ -1,0 +1,11 @@
+{
+  "domain": "pv_planner",
+  "name": "PV Planner",
+  "codeowners": ["@edhases"],
+  "config_flow": true,
+  "documentation": "https://github.com/edhases/home-energy-toolkit",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/edhases/home-energy-toolkit",
+  "version": "0.1.0"
+}

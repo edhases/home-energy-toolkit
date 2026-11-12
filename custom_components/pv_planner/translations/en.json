@@ -1,0 +1,168 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect PV Planner",
+        "description": "PV Planner reads your PV, grid and battery sensors and derives a solar forecast, the current power surplus and a battery reserve check. It never switches devices itself.\n\nThe forecast comes from the free Forecast.Solar service, which needs no API key.",
+        "data": {
+          "latitude": "Latitude",
+          "longitude": "Longitude",
+          "declination": "Panel tilt",
+          "azimuth": "Panel azimuth",
+          "kwp": "Peak power",
+          "pv_entity": "PV power sensor",
+          "grid_entity": "Grid power sensor",
+          "grid_sign": "Grid power sign",
+          "battery_power_entity": "Battery power sensor",
+          "battery_sign": "Battery power sign",
+          "battery_soc_entity": "Battery charge sensor",
+          "battery_capacity_kwh": "Battery capacity",
+          "min_reserve_percent": "Minimum reserve",
+          "night_consumption_kwh": "Night consumption",
+          "surplus_threshold_w": "Surplus threshold"
+        },
+        "data_description": {
+          "latitude": "Site latitude used for the Forecast.Solar estimate.",
+          "longitude": "Site longitude used for the Forecast.Solar estimate.",
+          "declination": "Tilt of the panels in degrees from horizontal: 0 is flat, 90 is vertical.",
+          "azimuth": "Forecast.Solar convention: 0 is south, -90 is east, 90 is west.",
+          "kwp": "Combined peak power of all panels in kWp.",
+          "pv_entity": "Sensor with the current total PV power in W or kW.",
+          "grid_entity": "Sensor with the signed grid power in W or kW.",
+          "grid_sign": "How your grid sensor shows the direction of energy.",
+          "battery_power_entity": "Sensor with the signed battery charge and discharge power in W or kW.",
+          "battery_sign": "How your battery power sensor shows charging.",
+          "battery_soc_entity": "Battery state of charge in percent.",
+          "battery_capacity_kwh": "Usable battery capacity in kWh.",
+          "min_reserve_percent": "Share of the battery that must always stay in reserve.",
+          "night_consumption_kwh": "Energy the house needs between sunset and sunrise.",
+          "surplus_threshold_w": "Minimum surplus power before the surplus binary sensor turns on."
+        }
+      }
+    },
+    "error": {
+      "invalid_entity": "Select a sensor of the required type: power in W or kW for PV, grid and battery power, and a percentage for the battery state of charge.",
+      "invalid_value": "This value is outside the allowed range."
+    },
+    "abort": {
+      "already_configured": "PV Planner is already set up. Edit the existing entry instead."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "PV Planner options",
+        "description": "Change the Forecast.Solar site, the source sensors or the reserve calculation. Saving reloads the integration.",
+        "data": {
+          "latitude": "Latitude",
+          "longitude": "Longitude",
+          "declination": "Panel tilt",
+          "azimuth": "Panel azimuth",
+          "kwp": "Peak power",
+          "pv_entity": "PV power sensor",
+          "grid_entity": "Grid power sensor",
+          "grid_sign": "Grid power sign",
+          "battery_power_entity": "Battery power sensor",
+          "battery_sign": "Battery power sign",
+          "battery_soc_entity": "Battery charge sensor",
+          "battery_capacity_kwh": "Battery capacity",
+          "min_reserve_percent": "Minimum reserve",
+          "night_consumption_kwh": "Night consumption",
+          "surplus_threshold_w": "Surplus threshold",
+          "forecast_poll_minutes": "Forecast poll interval"
+        },
+        "data_description": {
+          "latitude": "Site latitude used for the Forecast.Solar estimate.",
+          "longitude": "Site longitude used for the Forecast.Solar estimate.",
+          "declination": "Tilt of the panels in degrees from horizontal: 0 is flat, 90 is vertical.",
+          "azimuth": "Forecast.Solar convention: 0 is south, -90 is east, 90 is west.",
+          "kwp": "Combined peak power of all panels in kWp.",
+          "pv_entity": "Sensor with the current total PV power in W or kW.",
+          "grid_entity": "Sensor with the signed grid power in W or kW.",
+          "grid_sign": "How your grid sensor shows the direction of energy.",
+          "battery_power_entity": "Sensor with the signed battery charge and discharge power in W or kW.",
+          "battery_sign": "How your battery power sensor shows charging.",
+          "battery_soc_entity": "Battery state of charge in percent.",
+          "battery_capacity_kwh": "Usable battery capacity in kWh.",
+          "min_reserve_percent": "Share of the battery that must always stay in reserve.",
+          "night_consumption_kwh": "Energy the house needs between sunset and sunrise.",
+          "surplus_threshold_w": "Minimum surplus power before the surplus binary sensor turns on.",
+          "forecast_poll_minutes": "How often to refresh the forecast. At least 60 minutes: the free Forecast.Solar tier allows 12 requests per hour."
+        }
+      }
+    },
+    "error": {
+      "invalid_entity": "Select a sensor of the required type: power in W or kW for PV, grid and battery power, and a percentage for the battery state of charge.",
+      "invalid_value": "This value is outside the allowed range."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "pv_forecast_today": {
+        "name": "PV forecast today"
+      },
+      "pv_forecast_tomorrow": {
+        "name": "PV forecast tomorrow"
+      },
+      "pv_forecast_remaining_today": {
+        "name": "PV forecast remaining today"
+      },
+      "pv_forecast_now": {
+        "name": "PV forecast now"
+      },
+      "home_load_power": {
+        "name": "Home load power"
+      },
+      "battery_charge_power": {
+        "name": "Battery charge power"
+      },
+      "battery_remaining_energy": {
+        "name": "Battery remaining energy"
+      },
+      "battery_reserve_needed": {
+        "name": "Battery reserve needed",
+        "state_attributes": {
+          "explanation": {
+            "state": {
+              "night_consumption": "Energy the battery must hold to get the house through the night. Set by the night consumption option."
+            }
+          }
+        }
+      },
+      "power_surplus": {
+        "name": "Power surplus"
+      },
+      "energy_advice": {
+        "name": "Energy advice",
+        "state": {
+          "surplus": "Surplus available - run loads",
+          "hold": "Hold - no spare surplus",
+          "reserve_low": "Reserve low - charge the battery",
+          "no_data": "No data"
+        }
+      }
+    },
+    "binary_sensor": {
+      "surplus_available": {
+        "name": "Surplus available"
+      },
+      "battery_reserve_ok": {
+        "name": "Battery reserve OK"
+      }
+    }
+  },
+  "selector": {
+    "grid_sign": {
+      "options": {
+        "negative_is_import": "Negative value means import",
+        "positive_is_import": "Positive value means import"
+      }
+    },
+    "battery_sign": {
+      "options": {
+        "positive_is_charging": "Positive value means charging",
+        "negative_is_charging": "Negative value means charging"
+      }
+    }
+  }
+}

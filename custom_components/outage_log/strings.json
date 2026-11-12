@@ -1,0 +1,132 @@
+{
+  "title": "Outage Log",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up Outage Log",
+        "description": "Choose the sensor that reports whether grid power is present. Battery sensors are optional and only enrich the journal.",
+        "data": {
+          "grid_entity": "Grid status entity",
+          "grid_state_present": "State that means grid power is present",
+          "battery_soc_entity": "Battery state of charge entity",
+          "battery_power_entity": "Battery power entity",
+          "battery_capacity_kwh": "Battery capacity",
+          "notify_service": "Notification service",
+          "min_duration_seconds": "Minimum outage duration"
+        },
+        "data_description": {
+          "grid_entity": "A binary sensor that is on while the grid supplies power.",
+          "grid_state_present": "Select whether on or off means the grid is present.",
+          "battery_soc_entity": "Optional sensor with battery state of charge in percent.",
+          "battery_power_entity": "Optional sensor with battery power in watts.",
+          "battery_capacity_kwh": "Used to convert state-of-charge changes into energy. Default: 5.0 kWh.",
+          "notify_service": "Optional notify service, for example notify.mobile_app_phone.",
+          "min_duration_seconds": "Outages shorter than this are ignored. Default: 30 seconds."
+        }
+      }
+    },
+    "error": {
+      "invalid_entity": "One of the selected entities does not exist or has the wrong domain."
+    },
+    "abort": {
+      "already_configured": "An Outage Log entry already uses this grid entity."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Outage Log options",
+        "description": "Update the grid sensor, battery sensors, notifications, or minimum outage duration.",
+        "data": {
+          "grid_entity": "Grid status entity",
+          "grid_state_present": "State that means grid power is present",
+          "battery_soc_entity": "Battery state of charge entity",
+          "battery_power_entity": "Battery power entity",
+          "battery_capacity_kwh": "Battery capacity",
+          "notify_service": "Notification service",
+          "min_duration_seconds": "Minimum outage duration"
+        },
+        "data_description": {
+          "grid_entity": "A binary sensor that is on while the grid supplies power.",
+          "grid_state_present": "Select whether on or off means the grid is present.",
+          "battery_soc_entity": "Optional sensor with battery state of charge in percent.",
+          "battery_power_entity": "Optional sensor with battery power in watts.",
+          "battery_capacity_kwh": "Used to convert state-of-charge changes into energy. Default: 5.0 kWh.",
+          "notify_service": "Optional notify service, for example notify.mobile_app_phone.",
+          "min_duration_seconds": "Outages shorter than this are ignored. Default: 30 seconds."
+        }
+      }
+    },
+    "error": {
+      "invalid_entity": "One of the selected entities does not exist or has the wrong domain."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "outages_today": {
+        "name": "Outages today"
+      },
+      "outages_month": {
+        "name": "Outages this month"
+      },
+      "outage_time_today": {
+        "name": "Outage time today"
+      },
+      "outage_time_month": {
+        "name": "Outage time this month"
+      },
+      "last_outage_duration": {
+        "name": "Last outage duration"
+      },
+      "last_outage_started": {
+        "name": "Last outage started"
+      },
+      "current_outage_duration": {
+        "name": "Current outage duration"
+      }
+    },
+    "binary_sensor": {
+      "grid_outage": {
+        "name": "Grid outage"
+      }
+    },
+    "calendar": {
+      "grid_outages": {
+        "name": "Grid outages"
+      }
+    }
+  },
+  "selector": {
+    "grid_state_present": {
+      "options": {
+        "on": "On",
+        "off": "Off"
+      }
+    }
+  },
+  "common": {
+    "duration_seconds": "{seconds} s",
+    "duration_minutes": "{minutes} min",
+    "duration_hours": "{hours} h",
+    "grid_outage": "Grid outage",
+    "description_ongoing": "Ongoing since {start}.",
+    "description_duration": "Duration: {duration}.",
+    "description_soc": "Battery: {start}% at start, {end}% at end ({delta:+.1f} pp).",
+    "description_energy": "Estimated battery energy change: {energy:+.2f} kWh.",
+    "description_soc_start": "Battery at start: {start}%.",
+    "description_soc_end": "Battery at end: {end}%.",
+    "outage_started_title": "Grid outage started",
+    "outage_started": "Grid power was lost at {time}.",
+    "outage_ended_title": "Grid power restored",
+    "outage_ended": "Grid power returned after {duration}.",
+    "battery_soc": "Battery: {soc}%.",
+    "battery_soc_power": "Battery: {soc}% ({power} W).",
+    "battery_power": "Battery power: {power} W.",
+    "battery_delta": "Battery: {start}% → {end}% ({delta:+.1f} pp).",
+    "battery_energy": "Estimated battery energy change: {energy:+.2f} kWh.",
+    "battery_end": "Battery at restoration: {end}%.",
+    "battery_start": "Battery at outage start: {start}%.",
+    "persistent_title": "Long grid outage",
+    "persistent_message": "The grid was unavailable for {duration}. The outage started at {time}."
+  }
+}

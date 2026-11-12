@@ -1,0 +1,132 @@
+{
+  "title": "Журнал відключень",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Налаштування журналу відключень",
+        "description": "Виберіть сенсор, який показує наявність електропостачання. Сенсори батареї необов’язкові та лише доповнюють журнал.",
+        "data": {
+          "grid_entity": "Сенсор стану електромережі",
+          "grid_state_present": "Стан, що означає наявність електромережі",
+          "battery_soc_entity": "Сенсор заряду батареї",
+          "battery_power_entity": "Сенсор потужності батареї",
+          "battery_capacity_kwh": "Ємність батареї",
+          "notify_service": "Служба сповіщень",
+          "min_duration_seconds": "Мінімальна тривалість відключення"
+        },
+        "data_description": {
+          "grid_entity": "Бінарний сенсор, який увімкнений, коли мережа подає живлення.",
+          "grid_state_present": "Вкажіть, який стан означає наявність електромережі.",
+          "battery_soc_entity": "Необов’язковий сенсор заряду батареї у відсотках.",
+          "battery_power_entity": "Необов’язковий сенсор потужності батареї у ватах.",
+          "battery_capacity_kwh": "Використовується для перерахунку зміни заряду в енергію. Типово: 5,0 кВт·год.",
+          "notify_service": "Необов’язкова служба сповіщень, наприклад notify.mobile_app_phone.",
+          "min_duration_seconds": "Коротші відключення ігноруються. Типово: 30 секунд."
+        }
+      }
+    },
+    "error": {
+      "invalid_entity": "Один із вибраних об’єктів не існує або має неправильний тип."
+    },
+    "abort": {
+      "already_configured": "Запис журналу відключень уже використовує цей сенсор електромережі."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Параметри журналу відключень",
+        "description": "Оновіть сенсор електромережі, сенсори батареї, сповіщення або мінімальну тривалість відключення.",
+        "data": {
+          "grid_entity": "Сенсор стану електромережі",
+          "grid_state_present": "Стан, що означає наявність електромережі",
+          "battery_soc_entity": "Сенсор заряду батареї",
+          "battery_power_entity": "Сенсор потужності батареї",
+          "battery_capacity_kwh": "Ємність батареї",
+          "notify_service": "Служба сповіщень",
+          "min_duration_seconds": "Мінімальна тривалість відключення"
+        },
+        "data_description": {
+          "grid_entity": "Бінарний сенсор, який увімкнений, коли мережа подає живлення.",
+          "grid_state_present": "Вкажіть, який стан означає наявність електромережі.",
+          "battery_soc_entity": "Необов’язковий сенсор заряду батареї у відсотках.",
+          "battery_power_entity": "Необов’язковий сенсор потужності батареї у ватах.",
+          "battery_capacity_kwh": "Використовується для перерахунку зміни заряду в енергію. Типово: 5,0 кВт·год.",
+          "notify_service": "Необов’язкова служба сповіщень, наприклад notify.mobile_app_phone.",
+          "min_duration_seconds": "Коротші відключення ігноруються. Типово: 30 секунд."
+        }
+      }
+    },
+    "error": {
+      "invalid_entity": "Один із вибраних об’єктів не існує або має неправильний тип."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "outages_today": {
+        "name": "Відключення сьогодні"
+      },
+      "outages_month": {
+        "name": "Відключення цього місяця"
+      },
+      "outage_time_today": {
+        "name": "Час без мережі сьогодні"
+      },
+      "outage_time_month": {
+        "name": "Час без мережі цього місяця"
+      },
+      "last_outage_duration": {
+        "name": "Тривалість останнього відключення"
+      },
+      "last_outage_started": {
+        "name": "Початок останнього відключення"
+      },
+      "current_outage_duration": {
+        "name": "Тривалість поточного відключення"
+      }
+    },
+    "binary_sensor": {
+      "grid_outage": {
+        "name": "Відключення електромережі"
+      }
+    },
+    "calendar": {
+      "grid_outages": {
+        "name": "Відключення електромережі"
+      }
+    }
+  },
+  "selector": {
+    "grid_state_present": {
+      "options": {
+        "on": "Увімкнено",
+        "off": "Вимкнено"
+      }
+    }
+  },
+  "common": {
+    "duration_seconds": "{seconds} с",
+    "duration_minutes": "{minutes} хв",
+    "duration_hours": "{hours} год",
+    "grid_outage": "Відключення електромережі",
+    "description_ongoing": "Триває з {start}.",
+    "description_duration": "Тривалість: {duration}.",
+    "description_soc": "Батарея: {start}% на початку, {end}% наприкінці ({delta:+.1f} в. п.).",
+    "description_energy": "Оцінка зміни енергії батареї: {energy:+.2f} кВт·год.",
+    "description_soc_start": "Батарея на початку: {start}%.",
+    "description_soc_end": "Батарея наприкінці: {end}%.",
+    "outage_started_title": "Почалося відключення електромережі",
+    "outage_started": "Електропостачання зникло: {time}.",
+    "outage_ended_title": "Електропостачання відновлено",
+    "outage_ended": "Електропостачання повернулося через {duration}.",
+    "battery_soc": "Батарея: {soc}%.",
+    "battery_soc_power": "Батарея: {soc}% ({power} Вт).",
+    "battery_power": "Потужність батареї: {power} Вт.",
+    "battery_delta": "Батарея: {start}% → {end}% ({delta:+.1f} в. п.).",
+    "battery_energy": "Оцінка зміни енергії батареї: {energy:+.2f} кВт·год.",
+    "battery_end": "Батарея на момент відновлення: {end}%.",
+    "battery_start": "Батарея на початку відключення: {start}%.",
+    "persistent_title": "Тривале відключення електромережі",
+    "persistent_message": "Електромережа була відсутня {duration}. Відключення почалося: {time}."
+  }
+}

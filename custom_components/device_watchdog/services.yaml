@@ -1,0 +1,17 @@
+# Describes the services exposed by Device Watchdog.
+
+check_now:
+  fields:
+    entry_id:
+      required: false
+      selector:
+        config_entry:
+          integration: device_watchdog
+
+reset:
+  fields:
+    entry_id:
+      required: false
+      selector:
+        config_entry:
+          integration: device_watchdog

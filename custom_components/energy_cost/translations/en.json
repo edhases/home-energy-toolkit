@@ -1,0 +1,129 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Energy Cost",
+        "description": "Turn cumulative energy sensors into money using your electricity tariff.",
+        "data": {
+          "import_energy_entity": "Grid import energy sensor",
+          "export_energy_entity": "Grid export energy sensor",
+          "pv_energy_entity": "PV production energy sensor",
+          "tariff_mode": "Tariff mode",
+          "price_single": "Single-zone price per kWh",
+          "price_day": "Day price per kWh",
+          "price_night": "Night price per kWh",
+          "night_start": "Night window start",
+          "night_end": "Night window end",
+          "export_price": "Export price per kWh",
+          "currency": "Currency",
+          "month_start_day": "Billing period start day"
+        },
+        "data_description": {
+          "import_energy_entity": "Cumulative grid import sensor in kWh (state class total_increasing).",
+          "export_energy_entity": "Optional cumulative grid export sensor in kWh.",
+          "pv_energy_entity": "Optional cumulative PV production sensor in kWh, used to calculate savings.",
+          "tariff_mode": "Single-zone uses one price; dual-zone switches between day and night prices.",
+          "price_single": "Price per kWh for the single-zone tariff.",
+          "price_day": "Price per kWh during the day for the dual-zone tariff.",
+          "price_night": "Price per kWh during the night for the dual-zone tariff.",
+          "night_start": "Local time when the night tariff starts.",
+          "night_end": "Local time when the night tariff ends.",
+          "export_price": "Revenue per kWh exported to the grid; use 0 when export is not compensated.",
+          "currency": "Symbol shown on all money sensors, for example ₴.",
+          "month_start_day": "Day of the month when the billing period starts (1-28)."
+        }
+      }
+    },
+    "error": {
+      "invalid_entity": "Select a sensor entity that exists.",
+      "invalid_unit": "The sensor must report energy in kWh, Wh or MWh."
+    },
+    "abort": {
+      "already_configured": "Energy Cost is already configured for this import sensor."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Energy Cost options",
+        "description": "Update the sensors and tariff settings. Accumulated values are kept.",
+        "data": {
+          "import_energy_entity": "Grid import energy sensor",
+          "export_energy_entity": "Grid export energy sensor",
+          "pv_energy_entity": "PV production energy sensor",
+          "tariff_mode": "Tariff mode",
+          "price_single": "Single-zone price per kWh",
+          "price_day": "Day price per kWh",
+          "price_night": "Night price per kWh",
+          "night_start": "Night window start",
+          "night_end": "Night window end",
+          "export_price": "Export price per kWh",
+          "currency": "Currency",
+          "month_start_day": "Billing period start day"
+        },
+        "data_description": {
+          "import_energy_entity": "Cumulative grid import sensor in kWh (state class total_increasing).",
+          "export_energy_entity": "Optional cumulative grid export sensor in kWh.",
+          "pv_energy_entity": "Optional cumulative PV production sensor in kWh, used to calculate savings.",
+          "tariff_mode": "Single-zone uses one price; dual-zone switches between day and night prices.",
+          "price_single": "Price per kWh for the single-zone tariff.",
+          "price_day": "Price per kWh during the day for the dual-zone tariff.",
+          "price_night": "Price per kWh during the night for the dual-zone tariff.",
+          "night_start": "Local time when the night tariff starts.",
+          "night_end": "Local time when the night tariff ends.",
+          "export_price": "Revenue per kWh exported to the grid; use 0 when export is not compensated.",
+          "currency": "Symbol shown on all money sensors, for example ₴.",
+          "month_start_day": "Day of the month when the billing period starts (1-28)."
+        }
+      }
+    },
+    "error": {
+      "invalid_entity": "Select a sensor entity that exists.",
+      "invalid_unit": "The sensor must report energy in kWh, Wh or MWh."
+    }
+  },
+  "selector": {
+    "tariff_mode": {
+      "options": {
+        "single": "Single-zone",
+        "dual": "Dual-zone (day/night)"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "cost_period": {
+        "name": "Cost (billing period)"
+      },
+      "import_cost_period": {
+        "name": "Import cost (billing period)"
+      },
+      "export_revenue_period": {
+        "name": "Export revenue (billing period)"
+      },
+      "pv_saved_period": {
+        "name": "PV savings (billing period)"
+      },
+      "cost_today": {
+        "name": "Cost today"
+      },
+      "cost_month": {
+        "name": "Cost this month"
+      },
+      "cost_total": {
+        "name": "Total cost"
+      },
+      "current_price": {
+        "name": "Current price"
+      },
+      "tariff_now": {
+        "name": "Current tariff",
+        "state": {
+          "day": "Day",
+          "night": "Night",
+          "single": "Single-zone"
+        }
+      }
+    }
+  }
+}
